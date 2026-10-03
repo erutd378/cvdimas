@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="CV Lamaran Dimas - Teknisi Smartphone, Lulusan S1 Sistem Komputer UPI YPTK Padang" />
+  <meta name="theme-color" content="#1e293b" />
+  <title>CV Lamaran · Dimas — Smartphone Padang</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; }
+
+    html, body { height: 100%; width: 100%; }
+
+    /* ============ LATAR 3D HITAM-KUNING ============ */
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      min-height: 100dvh;
+      min-height: 100vh;
+      overflow: auto;
+      position: relative;
+      perspective: 1200px;
+    }
+
+    /* Lapisan 3D kuning-hitam berlapis */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -50%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(250, 204, 21, 0.18), transparent 45%),
+        radial-gradient(circle at 80% 80%, rgba(250, 204, 21, 0.12), transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.9), #000000 80%);
+      z-index: 0;
+      animation: bgRotate 20s linear infinite;
+      pointer-events: none;
+    }
+
+    /* Grid kuning 3D perspektif */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(250, 204, 21, 0.35) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(250, 204, 21, 0.35) 1px, transparent 1px);
+      background-size: 40px 40px;
+      transform: perspective(600px) rotateX(65deg) translateY(35%);
+      transform-origin: center bottom;
+      z-index: 0;
+      opacity: 0.55;
+      pointer-events: none;
+      animation: gridMove 6s linear infinite;
+      mask-image: linear-gradient(to top, #000 20%, transparent 90%);
+      -webkit-mask-image: linear-gradient(to top, #000 20%, transparent 90%);
+    }
+
+    @keyframes bgRotate {
+      0%   { transform: rotate(0deg) scale(1); }
+      50%  { transform: rotate(180deg) scale(1.05); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    @keyframes gridMove {
+      0%   { background-position: 0 0, 0 0; }
+      100% { background-position: 0 40px, 40px 0; }
+    }
+
+    /* ============ KARTU CV (3D FLOATING) ============ */
+    .cv-card {
+      width: 100%;
+      max-width: 1080px;
+      height: calc(100dvh - 12px);
+      height: calc(100vh - 12px);
+      max-height: 720px;
+      background: #ffffff;
+      box-shadow:
+        0 0 0 2px #facc15,
+        0 25px 55px -12px rgba(250, 204, 21, 0.45),
+        0 40px 90px -20px rgba(250, 204, 21, 0.25),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 2px solid #1e293b;
+      position: relative;
+      z-index: 2;
+      transform-style: preserve-3d;
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0) rotateX(0deg); }
+      50%      { transform: translateY(-6px) rotateX(1.5deg); }
+    }
+
+    /* ============ HEADER ============ */
+    .cv-header {
+      flex: 0 0 auto;
+      background: #1e293b;
+      color: #ffffff;
+      padding: 0.6rem 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      border-bottom: 3px solid #16a34a;
+    }
+
+    .avatar-frame {
+      width: 54px;
+      height: 54px;
+      overflow: hidden;
+      border: 2px solid #16a34a;
+      flex-shrink: 0;
+      background: #0f172a;
+      cursor: pointer;
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .header-info { flex: 1; min-width: 0; }
+
+    .name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      line-height: 1.15;
+      margin-bottom: 0.1rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .name .dot-accent {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #16a34a;
+    }
+
+    .sub-name {
+      font-size: 0.6rem;
+      color: #86efac;
+      font-weight: 500;
+      margin-bottom: 0.32rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: rgba(22, 163, 74, 0.15);
+      padding: 0.15rem 0.42rem;
+      font-size: 0.54rem;
+      font-weight: 600;
+      color: #86efac;
+      border: 1px solid #16a34a;
+      white-space: nowrap;
+    }
+
+    /* ============ BODY 2 KOLOM ============ */
+    .cv-body {
+      flex: 1;
+      display: flex;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .col-left {
+      flex: 1.15;
+      padding: 0.55rem 0.6rem;
+      overflow-y: auto;
+      background: #ffffff;
+      border-right: 2px solid #e2e8f0;
+      scrollbar-width: thin;
+      scrollbar-color: #16a34a #f1f5f9;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .col-left::-webkit-scrollbar { width: 4px; }
+    .col-left::-webkit-scrollbar-track { background: #f1f5f9; }
+    .col-left::-webkit-scrollbar-thumb { background: #16a34a; }
+
+    .col-right {
+      flex: 1;
+      padding: 0.55rem 0.6rem;
+      background: #f8fafc;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #16a34a #f1f5f9;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .col-right::-webkit-scrollbar { width: 4px; }
+    .col-right::-webkit-scrollbar-track { background: #f1f5f9; }
+    .col-right::-webkit-scrollbar-thumb { background: #16a34a; }
+
+    .section { margin-bottom: 0.55rem; }
+
+    .section-title {
+      font-size: 0.58rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      background: #1e293b;
+      padding: 0.22rem 0.5rem;
+      margin-bottom: 0.38rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-left: 4px solid #16a34a;
+    }
+
+    /* MENU 1: TENTANG — SPLIT */
+    .about-split {
+      display: flex;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #16a34a;
+      background: #f8fafc;
+    }
+
+    .about-split .about-icon {
+      flex: 0 0 32px;
+      background: #1e293b;
+      color: #16a34a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .about-split .about-text {
+      flex: 1;
+      padding: 0.45rem 0.55rem;
+      font-size: 0.64rem;
+      line-height: 1.5;
+      color: #1e293b;
+    }
+
+    /* MENU 2: PENDIDIKAN — BANNER */
+    .edu-banner {
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .edu-badge {
+      flex: 0 0 auto;
+      background: #16a34a;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.55rem;
+      font-weight: 800;
+      line-height: 1;
+      min-width: 60px;
+    }
+
+    .edu-badge .edu-year { font-size: 0.75rem; }
+    .edu-badge .edu-lbl {
+      font-size: 0.44rem;
+      letter-spacing: 0.5px;
+      margin-top: 3px;
+      font-weight: 700;
+    }
+
+    .edu-info {
+      flex: 1;
+      padding: 0.42rem 0.55rem;
+      min-width: 0;
+    }
+
+    .edu-info .edu-title {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+
+    .edu-info .edu-place {
+      font-size: 0.55rem;
+      color: #1e293b;
+      font-weight: 600;
+      margin-bottom: 2px;
+      line-height: 1.25;
+    }
+
+    .edu-info .edu-note {
+      font-size: 0.52rem;
+      color: #64748b;
+      line-height: 1.3;
+    }
+
+    /* MENU 3: PENGALAMAN — TIMELINE */
+    .exp-timeline {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .exp-timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 4px;
+      bottom: 4px;
+      width: 2px;
+      background: #16a34a;
+    }
+
+    .exp-node {
+      position: relative;
+      margin-bottom: 0.4rem;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #1e293b;
+      padding: 0.4rem 0.5rem;
+    }
+
+    .exp-node:last-child { margin-bottom: 0; }
+
+    .exp-node::before {
+      content: '';
+      position: absolute;
+      left: -16px;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      background: #16a34a;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 2px #16a34a;
+    }
+
+    .exp-node .node-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+      margin-bottom: 2px;
+      flex-wrap: wrap;
+    }
+
+    .exp-node .node-role {
+      font-size: 0.63rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .exp-node .node-period {
+      font-size: 0.48rem;
+      color: #ffffff;
+      background: #16a34a;
+      padding: 0.06rem 0.35rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .exp-node .node-place {
+      font-size: 0.54rem;
+      color: #1e293b;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .exp-node .node-desc {
+      font-size: 0.52rem;
+      color: #64748b;
+      line-height: 1.35;
+    }
+
+    /* MENU 4: KEAHLIAN — GRID */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .skill-cell {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-top: 3px solid #16a34a;
+      padding: 0.32rem 0.3rem;
+      text-align: center;
+      font-size: 0.52rem;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.25;
+    }
+
+    /* MENU 5: DATA — LABEL-VALUE */
+    .data-lv {
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+    }
+
+    .data-lv .lv-row {
+      display: flex;
+      align-items: stretch;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .data-lv .lv-row:last-child { border-bottom: none; }
+
+    .data-lv .lv-key {
+      flex: 0 0 78px;
+      background: #1e293b;
+      color: #86efac;
+      font-size: 0.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      padding: 0.32rem 0.42rem;
+      display: flex;
+      align-items: center;
+      line-height: 1.2;
+    }
+
+    .data-lv .lv-val {
+      flex: 1;
+      padding: 0.32rem 0.5rem;
+      font-size: 0.56rem;
+      font-weight: 600;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      line-height: 1.3;
+      min-width: 0;
+    }
+
+    /* MENU 6: KEUNGGULAN — CHECKBOX */
+    .pros-check {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .pros-check .check-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      padding: 0.3rem 0.45rem;
+      font-size: 0.54rem;
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    .pros-check .check-box {
+      flex: 0 0 16px;
+      height: 16px;
+      background: #16a34a;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 800;
+    }
+
+    /* MENU 7: TUJUAN — SURAT */
+    .letter-box {
+      border: 2px solid #1e293b;
+      border-top: 4px solid #16a34a;
+      background: #ffffff;
+      padding: 0.5rem 0.55rem;
+      position: relative;
+    }
+
+    .letter-box .letter-stamp {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: #16a34a;
+      color: #ffffff;
+      font-size: 0.44rem;
+      font-weight: 800;
+      padding: 0.12rem 0.35rem;
+      letter-spacing: 0.3px;
+    }
+
+    .letter-box .letter-to {
+      font-size: 0.5rem;
+      color: #64748b;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 3px;
+    }
+
+    .letter-box .letter-company {
+      font-size: 0.66rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+      margin-bottom: 3px;
+      padding-right: 42px;
+    }
+
+    .letter-box .letter-addr {
+      font-size: 0.52rem;
+      color: #64748b;
+      line-height: 1.35;
+    }
+
+    /* FOOTER */
+    .cv-footer {
+      flex: 0 0 auto;
+      background: #1e293b;
+      color: #ffffff;
+      padding: 0.42rem 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      border-top: 3px solid #16a34a;
+    }
+
+    .footer-left {
+      font-size: 0.56rem;
+      color: #86efac;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+    }
+
+    .footer-actions {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .btn-hub {
+      background: #16a34a;
+      color: #ffffff;
+      border: 1.5px solid #16a34a;
+      font-weight: 800;
+      font-size: 0.56rem;
+      padding: 0.3rem 0.65rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .btn-hub:hover { background: #15803d; border-color: #15803d; }
+
+    .btn-wa {
+      background: transparent;
+      color: #ffffff;
+      border: 1.5px solid #86efac;
+      font-weight: 700;
+      font-size: 0.56rem;
+      padding: 0.3rem 0.6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .btn-wa:hover { background: rgba(22, 163, 74, 0.15); }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 16px;
+      cursor: zoom-out;
+    }
+
+    .modal.active { display: flex; }
+
+    .modal img {
+      max-width: 92vw;
+      max-height: 88vh;
+      border: 3px solid #16a34a;
+      box-shadow: 0 0 60px rgba(250, 204, 21, 0.5),
+                  0 30px 60px -15px rgba(0,0,0,0.9);
+    }
+
+    /* ============================================ */
+    /* ============ RESPONSIVE MOBILE ============ */
+    /* ============================================ */
+    @media (max-width: 860px) {
+      body { padding: 4px; }
+
+      body::after { background-size: 30px 30px; }
+
+      .cv-card {
+        height: calc(100dvh - 8px);
+        max-height: none;
+        border-width: 2px;
+        animation: none;
+      }
+
+      .cv-header {
+        padding: 0.45rem 0.55rem;
+        gap: 0.5rem;
+        border-bottom-width: 2px;
+      }
+
+      .avatar-frame { width: 44px; height: 44px; }
+      .name { font-size: 0.92rem; gap: 4px; }
+      .sub-name { font-size: 0.53rem; margin-bottom: 0.25rem; }
+
+      .contact-row { gap: 2px; }
+      .contact-pill {
+        font-size: 0.46rem;
+        padding: 0.11rem 0.36rem;
+        gap: 3px;
+      }
+
+      .cv-body { flex-direction: row; }
+
+      .col-left { flex: 1.1; padding: 0.45rem 0.45rem; border-right-width: 2px; }
+      .col-right { flex: 1; padding: 0.45rem 0.45rem; }
+
+      .section { margin-bottom: 0.42rem; }
+
+      .section-title {
+        font-size: 0.5rem;
+        padding: 0.18rem 0.4rem;
+        margin-bottom: 0.28rem;
+        border-left-width: 3px;
+      }
+
+      .about-split .about-icon { flex: 0 0 26px; font-size: 0.75rem; }
+      .about-split .about-text { font-size: 0.56rem; padding: 0.35rem 0.42rem; }
+
+      .edu-badge { min-width: 48px; padding: 0.35rem 0.4rem; }
+      .edu-badge .edu-year { font-size: 0.62rem; }
+      .edu-badge .edu-lbl { font-size: 0.38rem; }
+      .edu-info { padding: 0.32rem 0.42rem; }
+      .edu-info .edu-title { font-size: 0.56rem; }
+      .edu-info .edu-place { font-size: 0.48rem; }
+      .edu-info .edu-note { font-size: 0.46rem; }
+
+      .exp-timeline { padding-left: 13px; }
+      .exp-timeline::before { left: 4px; }
+      .exp-node { padding: 0.32rem 0.4rem; margin-bottom: 0.28rem; }
+      .exp-node::before { left: -13px; top: 7px; width: 8px; height: 8px; }
+      .exp-node .node-role { font-size: 0.55rem; }
+      .exp-node .node-period { font-size: 0.42rem; padding: 0.05rem 0.28rem; }
+      .exp-node .node-place { font-size: 0.47rem; }
+      .exp-node .node-desc { font-size: 0.46rem; }
+
+      .skill-grid { grid-template-columns: repeat(3, 1fr); gap: 2px; }
+      .skill-cell { font-size: 0.46rem; padding: 0.25rem 0.2rem; }
+
+      .data-lv .lv-key { flex: 0 0 64px; font-size: 0.44rem; padding: 0.28rem 0.35rem; }
+      .data-lv .lv-val { font-size: 0.5rem; padding: 0.28rem 0.4rem; }
+
+      .pros-check .check-item { font-size: 0.48rem; padding: 0.25rem 0.4rem; gap: 5px; }
+      .pros-check .check-box { flex: 0 0 13px; height: 13px; font-size: 0.5rem; }
+
+      .letter-box { padding: 0.4rem 0.45rem; }
+      .letter-box .letter-stamp { font-size: 0.38rem; padding: 0.1rem 0.28rem; }
+      .letter-box .letter-to { font-size: 0.44rem; }
+      .letter-box .letter-company { font-size: 0.58rem; padding-right: 36px; }
+      .letter-box .letter-addr { font-size: 0.46rem; }
+
+      .cv-footer { padding: 0.32rem 0.5rem; gap: 4px; border-top-width: 2px; }
+      .footer-left { font-size: 0.48rem; }
+      .btn-hub { font-size: 0.5rem; padding: 0.26rem 0.55rem; }
+      .btn-wa { font-size: 0.5rem; padding: 0.26rem 0.5rem; }
+    }
+
+    @media (max-width: 380px) {
+      .cv-header { padding: 0.38rem 0.45rem; gap: 0.35rem; }
+      .avatar-frame { width: 38px; height: 38px; }
+      .name { font-size: 0.82rem; }
+      .sub-name { font-size: 0.47rem; }
+      .contact-pill { font-size: 0.42rem; padding: 0.1rem 0.32rem; }
+
+      .col-left, .col-right { padding: 0.38rem 0.4rem; }
+      .section { margin-bottom: 0.35rem; }
+      .section-title { font-size: 0.46rem; }
+
+      .about-split .about-text { font-size: 0.52rem; padding: 0.3rem 0.38rem; }
+
+      .edu-badge { min-width: 42px; padding: 0.3rem 0.32rem; }
+      .edu-badge .edu-year { font-size: 0.55rem; }
+      .edu-info .edu-title { font-size: 0.52rem; }
+      .edu-info .edu-place { font-size: 0.44rem; }
+      .edu-info .edu-note { font-size: 0.42rem; }
+
+      .exp-node .node-role { font-size: 0.5rem; }
+      .exp-node .node-place { font-size: 0.43rem; }
+      .exp-node .node-desc { font-size: 0.42rem; }
+
+      .skill-cell { font-size: 0.42rem; }
+
+      .data-lv .lv-key { flex: 0 0 56px; font-size: 0.4rem; }
+      .data-lv .lv-val { font-size: 0.46rem; }
+
+      .pros-check .check-item { font-size: 0.44rem; }
+
+      .letter-box .letter-company { font-size: 0.52rem; }
+
+      .footer-left { display: none; }
+      .btn-hub, .btn-wa { font-size: 0.44rem; padding: 0.22rem 0.45rem; }
+    }
+
+    @media (max-height: 640px) {
+      .cv-header { padding: 0.38rem 0.55rem; }
+      .avatar-frame { width: 40px; height: 40px; }
+      .name { font-size: 0.88rem; }
+      .sub-name { margin-bottom: 0.18rem; }
+      .col-left, .col-right { padding: 0.4rem 0.45rem; }
+      .section { margin-bottom: 0.36rem; }
+      .cv-footer { padding: 0.3rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cv-card" id="cvCard">
+
+    <!-- HEADER -->
+    <div class="cv-header">
+      <div class="avatar-frame">
+        <img
+          src="dimas.jpg"
+          alt="Foto Dimas" />
+      </div>
+
+      <div class="header-info">
+        <h1 class="name"><span class="dot-accent"></span> Dimas</h1>
+        <p class="sub-name">Kota Solok · Lulusan UPI YPTK Padang</p>
+
+        <div class="contact-row">
+          <span class="contact-pill">📞 0812-3456-7890</span>
+          <span class="contact-pill">✉️ dimas.solok@mail.com</span>
+          <span class="contact-pill">📍 Padang</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="cv-body">
+
+      <div class="col-left">
+
+        <div class="section">
+          <div class="section-title">👤 Tentang Saya</div>
+          <div class="about-split">
+            <div class="about-icon">D</div>
+            <div class="about-text">
+              Saya <strong>Dimas</strong>, asal <strong>Kota Solok</strong>. Lulusan
+              <strong>S1 Sistem Komputer UPI YPTK Padang (2023)</strong>. Disiplin,
+              cepat belajar, menyukai teknologi. Berniat melamar sebagai
+              <em>teknisi / staf smartphone</em> di <strong>Smartphone Padang</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">🎓 Pendidikan</div>
+          <div class="edu-banner">
+            <div class="edu-badge">
+              <div class="edu-year">2023</div>
+              <div class="edu-lbl">LULUS</div>
+            </div>
+            <div class="edu-info">
+              <div class="edu-title">S1 Sistem Komputer</div>
+              <div class="edu-place">Universitas Putra Indonesia YPTK — Padang</div>
+              <div class="edu-note">Fokus sistem komputer, jaringan & perangkat keras.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">💼 Pengalaman Kerja</div>
+          <div class="exp-timeline">
+
+            <div class="exp-node">
+              <div class="node-head">
+                <span class="node-role">Teknisi Smartphone</span>
+                <span class="node-period">2023 — 2024</span>
+              </div>
+              <div class="node-place">Gadget Center — Padang</div>
+              <div class="node-desc">Servis ringan, ganti LCD, baterai, dan software smartphone.</div>
+            </div>
+
+            <div class="exp-node">
+              <div class="node-head">
+                <span class="node-role">Magang IT Support</span>
+                <span class="node-period">2022 — 2023</span>
+              </div>
+              <div class="node-place">Dinas Komunikasi — Padang</div>
+              <div class="node-desc">Instalasi software, troubleshooting, dan perawatan perangkat.</div>
+            </div>
+
+            <div class="exp-node">
+              <div class="node-head">
+                <span class="node-role">Freelance Servis HP</span>
+                <span class="node-period">2021 — 2022</span>
+              </div>
+              <div class="node-place">Mandiri — Solok & Padang</div>
+              <div class="node-desc">Melayani perbaikan HP, flashing, dan upgrade software.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">🛠️ Keahlian</div>
+          <div class="skill-grid">
+            <div class="skill-cell">Servis HP</div>
+            <div class="skill-cell">Hardware</div>
+            <div class="skill-cell">Software</div>
+            <div class="skill-cell">Jaringan</div>
+            <div class="skill-cell">Troubleshooting</div>
+            <div class="skill-cell">Flashing</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-right">
+
+        <div class="section">
+          <div class="section-title">📋 Data Pribadi</div>
+          <div class="data-lv">
+            <div class="lv-row">
+              <div class="lv-key">Nama</div>
+              <div class="lv-val">Dimas</div>
+            </div>
+            <div class="lv-row">
+              <div class="lv-key">Usia</div>
+              <div class="lv-val">24 Tahun</div>
+            </div>
+            <div class="lv-row">
+              <div class="lv-key">Asal</div>
+              <div class="lv-val">Kota Solok</div>
+            </div>
+            <div class="lv-row">
+              <div class="lv-key">Pendidikan</div>
+              <div class="lv-val">S1 Sistem Komputer</div>
+            </div>
+            <div class="lv-row">
+              <div class="lv-key">Kampus</div>
+              <div class="lv-val">UPI YPTK Padang</div>
+            </div>
+            <div class="lv-row">
+              <div class="lv-key">Tamatan</div>
+              <div class="lv-val">2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">⭐ Keunggulan</div>
+          <div class="pros-check">
+            <div class="check-item">
+              <span class="check-box">✓</span> Disiplin & tepat waktu
+            </div>
+            <div class="check-item">
+              <span class="check-box">✓</span> Cepat belajar teknologi
+            </div>
+            <div class="check-item">
+              <span class="check-box">✓</span> Teliti & sabar
+            </div>
+            <div class="check-item">
+              <span class="check-box">✓</span> Jujur & bertanggung jawab
+            </div>
+            <div class="check-item">
+              <span class="check-box">✓</span> Mampu bekerja dalam tim
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">💌 Tujuan Lamaran</div>
+          <div class="letter-box">
+            <div class="letter-stamp">2025</div>
+            <div class="letter-to">Kepada Yth.</div>
+            <div class="letter-company">Smartphone Padang</div>
+            <div class="letter-addr">
+              Jl. Dobi No. 8, Kota Padang<br />
+              Sumatera Barat
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="cv-footer">
+      <div class="footer-left">📱 Padang, 2025</div>
+      <div class="footer-actions">
+        <button type="button" class="btn-hub" id="contactBtn">📩 Hubungi</button>
+        <button type="button" class="btn-wa" id="waBtn">💬 WhatsApp</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="photoModal" role="dialog" aria-label="Preview foto">
+    <img id="modalImg" src="" alt="Preview" />
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      var cvCard = document.getElementById('cvCard');
+      var contactBtn = document.getElementById('contactBtn');
+      var waBtn = document.getElementById('waBtn');
+      var modal = document.getElementById('photoModal');
+      var modalImg = document.getElementById('modalImg');
+
+      // Fade in on load
+      if (cvCard) {
+        cvCard.style.opacity = '0';
+        if (document.readyState === 'complete') {
+          cvCard.style.transition = 'opacity 0.4s ease';
+          cvCard.style.opacity = '1';
+        } else {
+          window.addEventListener('load', function() {
+            cvCard.style.transition = 'opacity 0.4s ease';
+            cvCard.style.opacity = '1';
+          });
+        }
+      }
+
+      // Contact button
+      if (contactBtn) {
+        contactBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          alert(
+            '📱 Kontak Dimas\n\n' +
+            'Telepon/WA : 0812-3456-7890\n' +
+            'Email      : dimas.solok@mail.com\n' +
+            'Asal       : Kota Solok\n' +
+            'Domisili   : Padang, Sumatera Barat\n' +
+            'Pendidikan : S1 Sistem Komputer UPI YPTK Padang (2023)\n\n' +
+            'Terima kasih!'
+          );
+        });
+      }
+
+      // WhatsApp button
+      if (waBtn) {
+        waBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var nomor = '6281234567890';
+          var pesan = encodeURIComponent(
+            'Halo Dimas, saya tertarik dengan lamaran kerja Anda di Smartphone Padang.'
+          );
+          window.open('https://wa.me/' + nomor + '?text=' + pesan, '_blank');
+        });
+      }
+
+      // Avatar click -> modal
+      var avatarImgs = document.querySelectorAll('.avatar-frame img');
+      for (var i = 0; i < avatarImgs.length; i++) {
+        (function(img) {
+          img.style.cursor = 'pointer';
+          img.addEventListener('click', function() {
+            if (modalImg) {
+              modalImg.src = this.src.replace('w=200', 'w=900');
+            }
+            if (modal) {
+              modal.classList.add('active');
+            }
+          });
+        })(avatarImgs[i]);
+      }
+
+      // Close modal on click
+      if (modal) {
+        modal.addEventListener('click', function() {
+          modal.classList.remove('active');
+          if (modalImg) modalImg.src = '';
+        });
+      }
+
+      // Close modal on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+          modal.classList.remove('active');
+          if (modalImg) modalImg.src = '';
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>
